@@ -35,12 +35,12 @@ import (
 	"errors"
 	"image"
 	"image/color"
-	"io/ioutil"
+	"io"
 	"log"
 	"math"
 	"time"
 
-	"github.com/muesli/smartcrop/options"
+	"github.com/admpub/smartcrop/options"
 
 	"golang.org/x/image/draw"
 )
@@ -119,7 +119,7 @@ func NewAnalyzer(resizer options.Resizer) Analyzer {
 // NewAnalyzerWithLogger returns a new analyzer with the given Resizer and Logger.
 func NewAnalyzerWithLogger(resizer options.Resizer, logger Logger) Analyzer {
 	if logger.Log == nil {
-		logger.Log = log.New(ioutil.Discard, "", 0)
+		logger.Log = log.New(io.Discard, "", 0)
 	}
 	return &smartcropAnalyzer{Resizer: resizer, logger: logger}
 }

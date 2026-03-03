@@ -33,12 +33,11 @@ import (
 	"image"
 	_ "image/jpeg"
 	_ "image/png"
-	"io/ioutil"
 	"os"
 	"strings"
 	"testing"
 
-	"github.com/muesli/smartcrop/nfnt"
+	"github.com/admpub/smartcrop/nfnt"
 )
 
 var (
@@ -124,7 +123,7 @@ func BenchmarkEdge(b *testing.B) {
 }
 
 func BenchmarkImageDir(b *testing.B) {
-	files, err := ioutil.ReadDir("./examples")
+	files, err := os.ReadDir("./examples")
 	if err != nil {
 		b.Fatal(err)
 	}
